@@ -1,0 +1,21 @@
+1. The general trend of the score is upwards. Overfitting does not seem to be a
+problem, even in the 95% range.
+
+2. I found the highest standard deviations (using numpy.std) tended to occur at
+around the largest and the smallest percentages. I think this is because those
+are the percentages where the training/testing split has the largest effect. At
+low percentages the training set is to small to produce consistant fits, as
+there is not enough data for outliers to be ignored, leading to a dependence on
+the specific datapoints chosen. A similar effect occurs with high percentages,
+where the small test set leads to a dependency on the particular choice of
+datapoints.
+
+3. A clear pattern begins to emerge around 100 trials. In order to find a smooth
+curve, however, I found that around 1000 trials worked well.
+
+4. for larger values of C the trend of the score becomes less linear and begins
+to resemple a logarithmic curve (or something like that, it's hard to be sure).
+This is because the values are less regularized. It also tends to return more
+accurate results (in the realm of 80% acuracy intead of 30%). I suspect the
+reguarization of the data caused the patterns found from the training to be
+distorted, and made the results less accurate.
